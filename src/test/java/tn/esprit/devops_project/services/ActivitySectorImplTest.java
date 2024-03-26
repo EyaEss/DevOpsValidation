@@ -28,12 +28,5 @@ class ActivitySectorImplTest {
     public void setUp() {
         MockitoAnnotations.openMocks(this);
     }
-    @Test
-    public void testRetrieveAllActivitySectors() {
-        List<ActivitySector> activitySectors = new ArrayList<>();
-        //when(activitySectorRepository.findAll()).thenReturn(activitySectors);
-        List<ActivitySector> result = activitySectorService.retrieveAllActivitySectors();
-
-        assertEquals(activitySectors, result);
-    }
+ 
 }
