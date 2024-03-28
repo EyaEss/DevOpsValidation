@@ -81,7 +81,7 @@
                     <execution>
                         <id>report</id>
                         <phase>test</phase>
-                             </plugin>
+                            
         </plugins>
     </build>
 
