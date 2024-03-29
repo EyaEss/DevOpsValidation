@@ -6,7 +6,7 @@ services:
 
   spring:
     container_name: devops-app
-    image: essoualhiaeya879/dockerimg-spring:latest
+    #image: essoualhiaeya879/dockerimg-spring:latest
     restart: always
     ports:
       - 8082:8082
