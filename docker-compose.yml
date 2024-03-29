@@ -1,0 +1,27 @@
+version: '3'
+networks:
+  monitor-net:
+    external: true
+services:
+
+  spring:
+    container_name: devops-app
+    image: essoualhiaeya879/dockerimg-spring:latest
+    restart: always
+    ports:
+      - 8082:8082
+    depends_on:
+      - mysql
+    networks:
+      - monitor-net
+  mysql:
+    container_name: mysql
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+    networks:
+      - monitor-net
