@@ -55,7 +55,7 @@
 
     <build>
               <defaultGoal>install</defaultGoal>
-             finalName>DevopsApp</finalName>
+             <finalName>DevopsApp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
