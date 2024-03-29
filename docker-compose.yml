@@ -6,6 +6,7 @@ services:
 
   spring:
     container_name: devops-app
+    build: .
     #image: essoualhiaeya879/dockerimg-spring:latest
     restart: always
     ports:
