@@ -9,9 +9,9 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+
+import java.util.*;
+
 import tn.esprit.devops_project.entities.Invoice;
 import tn.esprit.devops_project.entities.Operator;
 import tn.esprit.devops_project.entities.Supplier;
@@ -51,4 +51,37 @@ class InvoiceServiceImplTest {
         assertEquals(invoices, result);
         Mockito.verify(invoiceRepository).findAll();
     }
+    @Test
+    public void testCancelInvoice() {
+        // Given
+        Long invoiceId = 1L;
+        Invoice invoice = new Invoice();
+        invoice.setArchived(false);
+        when(invoiceRepository.findById(invoiceId)).thenReturn(Optional.of(invoice));
+
+        // When
+        invoiceService.cancelInvoice(invoiceId);
+
+        // Then
+        assertEquals(true, invoice.getArchived()); // Accessing archived directly
+        verify(invoiceRepository).save(invoice);
+    }
+    @Test
+    public void testRetrieveInvoice() {
+        // Given
+        Long invoiceId = 1L;
+        Invoice invoice = new Invoice();
+        // Set up stub behavior for the repository method
+        when(invoiceRepository.findById(invoiceId)).thenReturn(Optional.of(invoice));
+
+        // When
+        Invoice result = invoiceService.retrieveInvoice(invoiceId);
+
+        // Then
+        assertEquals(invoice, result);
+        verify(invoiceRepository).findById(invoiceId);
+    }
+   
+
+
 }
